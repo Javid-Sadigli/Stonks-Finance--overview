@@ -14,10 +14,6 @@ The project consists of three key microservices:
   - Receives requests from the frontend.
   - Forwards appropriate requests to the AI microservice (`ms-ai-yahoo-finance`).
   - Handles responses from AI and returns them to the frontend.
-- **Reason for Using API Gateway**:
-  - Centralized request routing ensures that the frontend communicates with a single endpoint.
-  - Supports future scalability, as additional AI services (e.g., for other stock markets) can be added without changing the frontend.
-  - Provides a layer of abstraction between frontend and backend logic.
 
 ### 2. **ms-ai-yahoo-finance**
 - **Role**: AI microservice responsible for stock data analysis and predictions.
@@ -43,15 +39,15 @@ The communication follows this flow:
 
 1. **Frontend to ms-main**:
    - The frontend sends a user request (e.g., stock symbol search, prediction query) to `ms-main`.
-   - Example: `GET /api/stocks/{symbol}/predict`
+   - Example: `GET /api/v1/stock_predictor/stock-overview`
 
 2. **ms-main to ms-ai-yahoo-finance**:
    - `ms-main` forwards the request to `ms-ai-yahoo-finance`.
-   - Example: `POST /stocks/{symbol}/predict`
+   - Example: `GET /stock-overview`
 
 3. **ms-ai-yahoo-finance to Yahoo Finance**:
    - `ms-ai-yahoo-finance` fetches stock data from Yahoo Finance when required.
-   - Example: Fetch historical stock data for training models.
+   - Example: Get overview of all stocks.
 
 4. **Response Handling**:
    - `ms-ai-yahoo-finance` processes the request and sends a response to `ms-main`.
@@ -66,7 +62,6 @@ The **API Gateway** pattern ensures:
   - Changes to backend services do not affect the frontend.
   - Backend services can evolve independently.
 - **Scalability**: Easily integrates additional backend services, such as new AI modules for other stock markets.
-- **Security**: Acts as a single entry point, enabling easier authentication and request validation.
 
 ## Future Prospects
 The design of **Stonks Finance** ensures extensibility. Potential enhancements include:
@@ -75,9 +70,6 @@ The design of **Stonks Finance** ensures extensibility. Potential enhancements i
   - Offering specialized AI models for different markets.
 - **Advanced Analytics**:
   - Providing users with insights like volatility, risk assessment, and portfolio recommendations.
-- **Mobile Application**:
-  - Expanding the platform’s reach with a native or hybrid mobile app.
-  
 
 ## Conclusion
 **Stonks Finance** is designed to provide a delightful user experience, robust backend processing, and scalability for future growth. By leveraging microservices and an API Gateway, the platform ensures modularity and ease of maintenance while delivering high-quality stock insights.
