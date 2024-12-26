@@ -73,3 +73,5 @@ The design of **Stonks Finance** ensures extensibility. Potential enhancements i
 
 ## Conclusion
 **Stonks Finance** is designed to provide a delightful user experience, robust backend processing, and scalability for future growth. By leveraging microservices and an API Gateway, the platform ensures modularity and ease of maintenance while delivering high-quality stock insights.
+
+## Thanks for your attention!
