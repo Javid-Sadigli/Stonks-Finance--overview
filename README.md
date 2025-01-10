@@ -57,7 +57,7 @@ The communication follows this flow:
 ![](./readme_images/architecture.png)
 
 The **API Gateway** pattern ensures:
-- **Centralized Routing**: The frontend interacts with only one endpoint (`ms-main`).
+- **Centralized Routing**: The frontend interacts with only one service (`ms-main`).
 - **Decoupled Frontend and Backend**:
   - Changes to backend services do not affect the frontend.
   - Backend services can evolve independently.
